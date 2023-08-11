@@ -26,6 +26,7 @@
 pull_registry=""
 push_registry=""
 images=""
+platform=""
 
 # Display help function
 display_help() {
@@ -34,9 +35,10 @@ display_help() {
     echo "   -p, --pull-registry    The registry to pull the images from. (Optional)"
     echo "   -u, --push-registry    The registry to push the images to. (Required)"
     echo "   -i, --images           A comma-separated list of images to transfer. (Required)"
+    echo "   -m, --platform         The platform of the images. (Optional)"
     echo
-    echo "Example: dit -p mypullregistry -u mypushregistry -i image1,image2,image3"
-    echo "Example: dit --pull-registry mypullregistry --push-registry mypushregistry --images image1,image2,image3"
+    echo "Example: dit -p mypullregistry -u mypushregistry -i image1,image2,image3 -m linux/amd64"
+    echo "Example: dit --pull-registry mypullregistry --push-registry mypushregistry --images image1,image2,image3 --platform linux/amd64"
     echo "Example: dit -u mypushregistry -i image1,image2,image3"
     echo "Example: dit --push-registry mypushregistry --images image1,image2,image3"
     exit 1
@@ -58,6 +60,10 @@ while (( "$#" )); do
       ;;
     -i|--images)
       images="$2"
+      shift 2
+      ;;
+    -m|--platform)
+      platform="$2"
       shift 2
       ;;
     --) # end argument parsing
@@ -88,13 +94,25 @@ IFS=',' read -ra images_array <<< "$images"
 for image in "${images_array[@]}"; do
     # Check if pull-registry is provided
     if [ -n "$pull_registry" ]; then
-        # Pull the image
-        docker pull $pull_registry/$image
+        # Check if platform is provided
+        if [ -n "$platform" ]; then
+            # Pull the image with platform
+            docker pull --platform $platform $pull_registry/$image
+        else
+            # Pull the image
+            docker pull $pull_registry/$image
+        fi
         # Retag the image
         docker tag $pull_registry/$image $push_registry/$image
     else
-        # Pull the image without a registry prefix
-        docker pull $image
+        # Check if platform is provided
+        if [ -n "$platform" ]; then
+            # Pull the image with platform
+            docker pull --platform $platform $image
+        else
+            # Pull the image without a registry prefix
+            docker pull $image
+        fi
         # Retag the image
         docker tag $image $push_registry/$image
     fi
