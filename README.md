@@ -16,5 +16,5 @@ dit -h
 ## Examples
 Pull ubuntu image from offical dockerhub and reupload to ghcr.io
 ```shell
-dit -u "ghcr.io/kiritoxkiriko" -m linux/amd64 -i "ubuntu:20.04,ubuntu:22.04"
+dit -p "" -u "ghcr.io/kiritoxkiriko" -m linux/amd64 -i "ubuntu:20.04,ubuntu:22.04"
 ```
