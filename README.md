@@ -1,5 +1,5 @@
 # Dit (docker-image-transfer)
-A docker image transfer shell script, help u pull, retag, reupload to from one image registry to another
+A docker image transfer shell script, help u pull, retag, reupload to from one image registry to another  
 **All codes are genrated By OpenAI ChatGPT**
 ## Installation
 ```shell
