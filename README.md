@@ -9,7 +9,7 @@ mv ./dit /usr/local/bin
 ```
 ## Usage
 ```shell
-dit -p mypullregistry -u mypushregistry -m linux/amd64,linux/arm64 -i image1,image2,image3
+dit -p mypullregistry -u mypushregistry -m platform -i image1,image2,image3
 # show help
 dit -h
 ```
