@@ -3,7 +3,7 @@ A docker image transfer shell script, help u pull, retag, reupload to from one i
 **All codes are genrated By OpenAI ChatGPT**
 ## Installation
 ```shell
-wget  ./dit
+wget https://github.com/kiritoxkiriko/dit/releases/download/v0.0.1/dit.sh ./dit
 chmod +x ./dit
 mv ./dit /usr/local/bin
 ```
