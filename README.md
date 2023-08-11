@@ -9,12 +9,12 @@ mv ./dit /usr/local/bin
 ```
 ## Usage
 ```shell
-dit -p mypullregistry -u mypushregistry -i image1,image2,image3
+dit -p mypullregistry -u mypushregistry -m linux/amd64,linux/arm64 -i image1,image2,image3
 # show help
 dit -h
 ```
 ## Examples
 Pull ubuntu image from offical dockerhub and reupload to ghcr.io
 ```shell
-dit -u "ghcr.io/kiritoxkiriko" -i "ubuntu:20.04,ubuntu:22.04"
+dit -u "ghcr.io/kiritoxkiriko" -m linux/amd64 -i "ubuntu:20.04,ubuntu:22.04"
 ```
