@@ -17,4 +17,5 @@ dit -h
 Pull ubuntu image from offical dockerhub and reupload to ghcr.io
 ```shell
 dit -p "" -u "ghcr.io/kiritoxkiriko" -m linux/amd64 -i "ubuntu:20.04,ubuntu:22.04"
+# it will pull image from ubuntu:20.04, ubuntu:22.04, and push to ghcr.io/kiritoxkiriko/ubuntu:20.04, ghcr.io/kiritoxkiriko/ubuntu:22.04
 ```
